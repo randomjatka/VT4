@@ -8,13 +8,27 @@
 
 .stop2 {
   stop-color: purple;
+  animation-duration: 10s;
+  animation-timing-function: steps(2,end);
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-name: varivaihto;
 }
 
 .stop3 {
   stop-color: black; 
 }
 
-#liikkuvanelio {
+@keyframes varivaihto {
+  from {
+    stop-color: purple;
+  }
+  to {
+    stop-color: yellow;
+  }
+}
+
+.liikkuvatpalkit {
   animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
