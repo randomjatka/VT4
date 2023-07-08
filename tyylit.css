@@ -2,3 +2,37 @@
   --taustavari: black;
 }
   
+.stop1 {
+  stop-color: black; 
+}
+
+.stop2 {
+  stop-color: purple;
+}
+
+.stop3 {
+  stop-color: black; 
+}
+
+#liikkuvanelio {
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-name: slide;
+}
+
+@keyframes slide {
+  from {
+    width: 1%;
+    transform: translate(10%, 10%); 
+  }
+  50% {
+    width: 5%;
+    transform: translate(22.5%, 10%); 
+  }
+  to {
+    width: 1%;
+    transform: translate(35%, 10%);
+  }
+}
