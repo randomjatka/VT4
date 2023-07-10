@@ -8,6 +8,7 @@ window.onload = function() {
     // Referoi piirrettävään svg:hen id:n avulla. sitten tee createElementNS kutsulla haluttu muotu, sitten muuta elementin
     // style arvoja haluamaksesi
     let svg = document.getElementById("piirtoalusta");
+    
     for (let i=0; i<10; i++) {
         let rect = document.createElementNS("http://www.w3.org/2000/svg","rect");
         //rect.style.x = (i*3) + "%";
@@ -54,6 +55,10 @@ window.onload = function() {
         }
     }
 
+    let pingviinipainike = document.getElementById("pingviininappain");
+    pingviinipainike.addEventListener("click", lisaaPingviini); 
+
+    function lisaaPingviini(e) {
     let pingviini = document.createElementNS("http://www.w3.org/2000/svg","image");
     pingviini.style.x = "0%";
     pingviini.style.y = "0%";
@@ -71,9 +76,10 @@ window.onload = function() {
     //pingviini.style.zIndex = "10";
     pingviini.classList.add("pingviinit");
     svg.appendChild(pingviini);
+    }
 
     //svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     //svg.setAttribute("version", "1.1");
     //svg.setAttribute("width", "300");
     //svg.setAttribute("height", "200");
-    };
+};
