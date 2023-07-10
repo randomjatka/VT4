@@ -8,6 +8,12 @@ window.onload = function() {
     // Referoi piirrettävään svg:hen id:n avulla. sitten tee createElementNS kutsulla haluttu muotu, sitten muuta elementin
     // style arvoja haluamaksesi
     let svg = document.getElementById("piirtoalusta");
+
+    // muista aina käyttää style.width ominaisuutta eikä setAttributea, koska tehtävänanto vaatii sen
+    svg.style.width = "95vw";
+    svg.style.height = "95vh";
+    //svg.setAttribute("width", "95vw");
+    //svg.setAttribute("height", "95vh");
     
     for (let i=0; i<10; i++) {
         let rect = document.createElementNS("http://www.w3.org/2000/svg","rect");
@@ -31,6 +37,7 @@ window.onload = function() {
         //rect.style.x = (i*3) + "%";
         rectToka.style.x = "60%";
         rectToka.style.y = "50%";
+        //TODO: JSHINT valittaa, että rect-objekteilla pitäisi olla height ja width-attribuutit. pitää korjata
         rectToka.style.width = "5%";
         rectToka.style.height = "25%";
         //rect.style.fill = "blue";
@@ -62,21 +69,53 @@ window.onload = function() {
     let pingviini = document.createElementNS("http://www.w3.org/2000/svg","image");
     pingviini.style.x = "0%";
     pingviini.style.y = "0%";
-    pingviini.style.width = "150";
-    pingviini.style.height = "150";
     pingviini.style.position = "absolute";
-    //pingviini.style.visibility = 'visible';
+    
+    //Tässä voi määrittää pingviinille valinnaisen koon, mutta ei välttämättä tarvitse.
+    //pingviini.style.width = "150px";
+    //pingviini.style.height = "150px";
+
     //pingviini.src = "https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png";
+    //pingviini.style.visibility = 'visible';
     //pingviini.alt = "pingviinikuva";
-    //pingviini.style.x = "0%";
-    //pingviini.style.y = "0%";
+
+
     //tässä jos kokeilee pingviini.href niin tulee vain getter only property!
+    //TODO: JSHINT valittaa, että a0:href not allowed on element image at this point. tee ehkä pingviini.src sen sijaan, ja laita
+    //ulkopuolelle svg:tä?
     pingviini.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png'); 
     
     //pingviini.style.zIndex = "10";
     pingviini.classList.add("pingviinit");
     svg.appendChild(pingviini);
     }
+
+    //let canvas = document.createElement("canvas");
+    //Piti hakea pöllö html tiedostosta, muuten kuvaa ei löytynyt, jota piirtää canvakselle
+    let canvas = document.getElementById("polloalusta");
+    const ctx = canvas.getContext('2d');
+    let pollokuva = document.getElementsByTagName('img')[0];
+    pollokuva.style.display = "none";
+    //pollokuva.style.width = "564px";
+    //pollokuva.style.height = "552px";
+    //let pollokuva = document.createElement('img');
+    //pollokuva.src = "http://appro.mit.jyu.fi/tiea2120/vt/vt4/owl.png";
+    //pollokuva.alt = "kuvapöllöstä";
+    //document.body.appendChild(pollokuva);
+
+    //Tässä jos yrittää käyttää style.width, niin canvas defaulttaa 300x150 kokoiseksi, en tiedä miksi
+    canvas.width = "564";
+    canvas.height = "552";
+    canvas.style.position = "absolute";
+    canvas.style.top = "20%";
+    canvas.style.left = "35%";
+    canvas.style.zIndex = "11";
+    //ctx.fillStyle = "#ff0000";
+    //ctx.fillRect(0, 0, 150, 200);
+    //ctx.fillStyle = "blue";
+    //ctx.fillRect(0, 0, 150, 200);
+    ctx.drawImage(pollokuva, 0, 0);
+    document.body.appendChild(canvas);
 
     //svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     //svg.setAttribute("version", "1.1");
