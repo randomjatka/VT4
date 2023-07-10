@@ -69,7 +69,7 @@ window.onload = function() {
     pingviini.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png'); 
     
     //pingviini.style.zIndex = "10";
-
+    pingviini.classList.add("pingviinit");
     svg.appendChild(pingviini);
 
     //svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");

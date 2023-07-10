@@ -27,6 +27,12 @@ body {
   animation-name: slide;
 }
 
+.pingviinit {
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-name: pingviiniliike;
+}
 
 @keyframes leveysmuokkaus {
   from {
@@ -56,5 +62,48 @@ body {
   }
   to {
     fill: url(#Gradient2);
+  }
+}
+
+/* haluttu rata: vasenylä-keski-vasenala-keski-oikeaylä-keski-oikeaala-keski-oikeaylä-keski-vasenala-keski-vasenylä */
+@keyframes pingviiniliike {
+  from {
+    transform: translate(0%, 0%); 
+  }
+  8.3% {
+    transform: translate(calc(50% - 150px), calc(50% - 150px)); 
+  }
+  16.6% {
+    transform: translate(calc(0%), calc(100% - 150px));
+  }
+  25% {
+    transform: translate(calc(50% - 150px), calc(50% - 150px)); 
+  }
+  33.3% {
+    transform: translate(calc(100% - 150px), calc(0%));
+  }
+  41.6% {
+    transform: translate(calc(50% - 150px), calc(50% - 150px)); 
+  }
+  50% {
+    transform: translate(calc(100% - 150px), calc(100% - 150px));
+  }
+  58.3% {
+    transform: translate(calc(50% - 150px), calc(50% - 150px)); 
+  }
+  66.6% {
+    transform: translate(calc(100% - 150px), calc(0%));
+  }
+  75% {
+    transform: translate(calc(50% - 150px), calc(50% - 150px)); 
+  }
+  83.3% {
+    transform: translate(calc(0%), calc(100% - 150px));
+  }
+  91.6% {
+    transform: translate(calc(50% - 150px), calc(50% - 150px)); 
+  }
+  to {
+    transform: translate(calc(0%), calc(0%));
   }
 }
