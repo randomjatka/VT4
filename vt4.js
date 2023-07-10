@@ -13,8 +13,8 @@ window.onload = function() {
         //rect.style.x = (i*3) + "%";
         rect.style.x = "10%";
         rect.style.y = "10%";
-        rect.style.width = "2%";
-        rect.style.height = "10%";
+        rect.style.width = "5%";
+        rect.style.height = "25%";
         //rect.style.fill = "blue";
         rect.classList.add("neliot");
         // Tässä saadaan muuttujasta riippuva viive animaatiolle, huomaa että hipsut ovat tässä erikoiset, käytä copy-paste!
@@ -25,6 +25,23 @@ window.onload = function() {
         rect.style.fill = "url(#Gradient1)";
         rect.addEventListener("animationiteration", animlistener);
         svg.appendChild(rect);
+
+        let rectToka = document.createElementNS("http://www.w3.org/2000/svg","rect");
+        //rect.style.x = (i*3) + "%";
+        rectToka.style.x = "60%";
+        rectToka.style.y = "50%";
+        rectToka.style.width = "5%";
+        rectToka.style.height = "25%";
+        //rect.style.fill = "blue";
+        rectToka.classList.add("neliot");
+        // Tässä saadaan muuttujasta riippuva viive animaatiolle, huomaa että hipsut ovat tässä erikoiset, käytä copy-paste!
+        //rect.setAttribute("style", `animation-delay: ${i}s`);
+        rectToka.style.animationDelay = i/4 + "s";
+        //rect.style.zIndex = -i;
+        //rect.style.sijainti = i*3;
+        rectToka.style.fill = "url(#Gradient1)";
+        rectToka.addEventListener("animationiteration", animlistener);
+        svg.appendChild(rectToka);
     }
 
     // Muutetaan palkkien väri tapahtumakäsittelijällä
@@ -36,6 +53,18 @@ window.onload = function() {
             e.target.style.fill = "url(#Gradient1)";
         }
     }
+
+    let pingviini = document.createElement("img");
+    pingviini.src = "https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png";
+    pingviini.alt = "pingviinikuva";
+    pingviini.style.x = "0%";
+    pingviini.style.y = "0%";
+    pingviini.style.width = "150px";
+    pingviini.style.height = "150px";
+    pingviini.style.zIndex = "10";
+
+    svg.appendChild(pingviini);
+
     //svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     //svg.setAttribute("version", "1.1");
     //svg.setAttribute("width", "300");
