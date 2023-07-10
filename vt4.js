@@ -54,14 +54,21 @@ window.onload = function() {
         }
     }
 
-    let pingviini = document.createElement("img");
-    pingviini.src = "https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png";
-    pingviini.alt = "pingviinikuva";
+    let pingviini = document.createElementNS("http://www.w3.org/2000/svg","image");
     pingviini.style.x = "0%";
     pingviini.style.y = "0%";
-    pingviini.style.width = "150px";
-    pingviini.style.height = "150px";
-    pingviini.style.zIndex = "10";
+    pingviini.style.width = "150";
+    pingviini.style.height = "150";
+    pingviini.style.position = "absolute";
+    //pingviini.style.visibility = 'visible';
+    //pingviini.src = "https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png";
+    //pingviini.alt = "pingviinikuva";
+    //pingviini.style.x = "0%";
+    //pingviini.style.y = "0%";
+    //tässä jos kokeilee pingviini.href niin tulee vain getter only property!
+    pingviini.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png'); 
+    
+    //pingviini.style.zIndex = "10";
 
     svg.appendChild(pingviini);
 
