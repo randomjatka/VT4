@@ -158,22 +158,13 @@ window.onload = function() {
 
 
 /**
- * Tällä tapahtumankäsittelijäfunktiolla sovitellaan pöllönkuva ruutuun, kun sitä pienennetään alle 600 pikseliin. Kun ruutua taas suurennetaan,
+ * Tällä tapahtumankäsittelijäfunktiolla sovitellaan pöllönkuva ruutuun, kun sitä pienennetään. Kun ruutua taas suurennetaan,
  * pöllö asetetaan takaisin keskemmälle ruutua
  */
 window.onresize = function() {
     let canvas = document.getElementById("polloalusta");
     let tokaCanvas = document.getElementById("tokaPolloAlusta");
-    if (document.body.scrollHeight < 600) {
-        canvas.style.top = "0vh";
-        tokaCanvas.style.top = "0vh";
-    }
-    else {
-        canvas.style.top = "20vh";
-        tokaCanvas.style.top = "20vh";
-    }
-    //canvas.style.top = "20vh";
-    //tokaCanvas.style.top = "20vh";
-    //canvas.style.x = "20%";
-    //tokaCanvas.style.y = "20%";
+    let pollonvalistus = (document.body.scrollHeight - canvas.height) / 2;
+    canvas.style.top = `${pollonvalistus}px`;
+    tokaCanvas.style.top = `${pollonvalistus}px`;
 };
