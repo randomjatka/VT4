@@ -66,10 +66,17 @@ window.onload = function() {
     pingviinipainike.addEventListener("click", lisaaPingviini); 
 
     function lisaaPingviini(e) {
-    let pingviini = document.createElementNS("http://www.w3.org/2000/svg","image");
-    pingviini.style.x = "0%";
-    pingviini.style.y = "0%";
+    let pingviini = document.createElement("img");
     pingviini.style.position = "absolute";
+    pingviini.style.top = "0%";
+    pingviini.style.left = "0%";
+    pingviini.alt = "pingviinikuva";
+
+    pingviini.src = "https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png"; 
+    
+    pingviini.style.zIndex = "2";
+    pingviini.classList.add("pingviinit");
+    document.body.appendChild(pingviini);
     
     //Tässä voi määrittää pingviinille valinnaisen koon, mutta ei välttämättä tarvitse.
     //pingviini.style.width = "150px";
@@ -79,15 +86,10 @@ window.onload = function() {
     //pingviini.style.visibility = 'visible';
     //pingviini.alt = "pingviinikuva";
 
-
     //tässä jos kokeilee pingviini.href niin tulee vain getter only property!
     //TODO: JSHINT valittaa, että a0:href not allowed on element image at this point. tee ehkä pingviini.src sen sijaan, ja laita
     //ulkopuolelle svg:tä?
-    pingviini.setAttributeNS('http://www.w3.org/1999/xlink', 'href', 'https://appro.mit.jyu.fi/tiea2120/vt/vt4/penguin.png'); 
     
-    //pingviini.style.zIndex = "10";
-    pingviini.classList.add("pingviinit");
-    svg.appendChild(pingviini);
     }
 
     //let canvas = document.createElement("canvas");
@@ -96,6 +98,10 @@ window.onload = function() {
     const ctx = canvas.getContext('2d');
     let pollokuva = document.getElementsByTagName('img')[0];
     pollokuva.style.display = "none";
+
+    let tokaCanvas = document.createElement("canvas");
+    const tokactx = tokaCanvas.getContext('2d');
+    tokaCanvas.id = "tokaPolloAlusta";
     //pollokuva.style.width = "564px";
     //pollokuva.style.height = "552px";
     //let pollokuva = document.createElement('img');
@@ -107,9 +113,20 @@ window.onload = function() {
     canvas.width = "564";
     canvas.height = "552";
     canvas.style.position = "absolute";
-    canvas.style.top = "20%";
-    canvas.style.left = "35%";
-    canvas.style.zIndex = "11";
+    canvas.style.top = "10%";
+    canvas.style.left = "0%";
+    canvas.style.zIndex = "1";
+    canvas.style.overflow = "hidden";
+
+    tokaCanvas.width = "564";
+    tokaCanvas.height = "552";
+    tokaCanvas.style.position = "absolute";
+    tokaCanvas.style.top = "10%";
+    tokaCanvas.style.right = "0%";
+    tokaCanvas.style.zIndex = "1";
+    canvas.style.overflow = "hidden";
+
+
     //ctx.fillStyle = "#ff0000";
     //ctx.fillRect(0, 0, 150, 200);
     //ctx.fillStyle = "blue";
@@ -121,14 +138,27 @@ window.onload = function() {
     for (let i=0; i<16; i+=2) {
     //Ensimmäinen numero on lähteen x-koordinaatti, toinen y-koordinaatti, kolmas lähteen leveys, neljäs lähteen pituus,
     //viides kohteen x-koordinaatti, kuudes kohteen y-koordinaatti, seitsemäs kohteen leveys, kahdeksas kohteen pituus
-    ctx.drawImage(pollokuva, 0, i*pollonpalat, pollokuva.naturalWidth, pollonpalat, 0, i*pollonpalat, pollokuva.naturalWidth, pollonpalat);
+        ctx.drawImage(pollokuva, 0, i*pollonpalat, pollokuva.naturalWidth, pollonpalat, 0, i*pollonpalat, pollokuva.naturalWidth, pollonpalat);
+    }
+
+    //Toinen silmukka jolla tehdään toiset pöllön puolikkaat
+    for (let i=1; i<=16; i+=2) {
+        tokactx.drawImage(pollokuva, 0, i*pollonpalat, pollokuva.naturalWidth, pollonpalat, 0, i*pollonpalat, pollokuva.naturalWidth, pollonpalat);  
     }
 
     //ctx.drawImage(pollokuva, 0, 0);
     document.body.appendChild(canvas);
+    document.body.appendChild(tokaCanvas);
 
     //svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     //svg.setAttribute("version", "1.1");
     //svg.setAttribute("width", "300");
     //svg.setAttribute("height", "200");
+};
+
+window.onresize = function() {
+    let canvas = document.getElementById("polloalusta");
+    let tokaCanvas = document.getElementById("tokaPolloAlusta");
+    canvas.style.top = "10%";
+    tokaCanvas.style.top = "10%";
 };
