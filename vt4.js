@@ -114,7 +114,17 @@ window.onload = function() {
     //ctx.fillRect(0, 0, 150, 200);
     //ctx.fillStyle = "blue";
     //ctx.fillRect(0, 0, 150, 200);
-    ctx.drawImage(pollokuva, 0, 0);
+
+    // pollonpalat-muuttuja päättää, kuinka moneen osaan pöllö jaetaan
+    const pollonpalat = pollokuva.naturalHeight/16;
+    //Tehdään silmukka jolla piirretään pöllö palasina canvakselle
+    for (let i=0; i<16; i+=2) {
+    //Ensimmäinen numero on lähteen x-koordinaatti, toinen y-koordinaatti, kolmas lähteen leveys, neljäs lähteen pituus,
+    //viides kohteen x-koordinaatti, kuudes kohteen y-koordinaatti, seitsemäs kohteen leveys, kahdeksas kohteen pituus
+    ctx.drawImage(pollokuva, 0, i*pollonpalat, pollokuva.naturalWidth, pollonpalat, 0, i*pollonpalat, pollokuva.naturalWidth, pollonpalat);
+    }
+
+    //ctx.drawImage(pollokuva, 0, 0);
     document.body.appendChild(canvas);
 
     //svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
