@@ -36,7 +36,7 @@ window.onload = function() {
         let rectToka = document.createElementNS("http://www.w3.org/2000/svg","rect");
         //rect.style.x = (i*3) + "%";
         rectToka.style.x = "60%";
-        rectToka.style.y = "50%";
+        rectToka.style.y = "60%";
         //TODO: JSHINT valittaa, että rect-objekteilla pitäisi olla height ja width-attribuutit. pitää korjata
         rectToka.style.width = "5%";
         rectToka.style.height = "25%";
@@ -113,7 +113,7 @@ window.onload = function() {
     canvas.width = "564";
     canvas.height = "552";
     canvas.style.position = "absolute";
-    canvas.style.top = "10%";
+    canvas.style.top = "20vh";
     canvas.style.left = "0%";
     canvas.style.zIndex = "1";
     canvas.style.overflow = "hidden";
@@ -121,7 +121,7 @@ window.onload = function() {
     tokaCanvas.width = "564";
     tokaCanvas.height = "552";
     tokaCanvas.style.position = "absolute";
-    tokaCanvas.style.top = "10%";
+    tokaCanvas.style.top = "20vh";
     tokaCanvas.style.right = "0%";
     tokaCanvas.style.zIndex = "1";
     canvas.style.overflow = "hidden";
@@ -156,9 +156,24 @@ window.onload = function() {
     //svg.setAttribute("height", "200");
 };
 
+
+/**
+ * Tällä tapahtumankäsittelijäfunktiolla sovitellaan pöllönkuva ruutuun, kun sitä pienennetään alle 600 pikseliin. Kun ruutua taas suurennetaan,
+ * pöllö asetetaan takaisin keskemmälle ruutua
+ */
 window.onresize = function() {
     let canvas = document.getElementById("polloalusta");
     let tokaCanvas = document.getElementById("tokaPolloAlusta");
-    canvas.style.top = "10%";
-    tokaCanvas.style.top = "10%";
+    if (document.body.scrollHeight < 600) {
+        canvas.style.top = "0vh";
+        tokaCanvas.style.top = "0vh";
+    }
+    else {
+        canvas.style.top = "20vh";
+        tokaCanvas.style.top = "20vh";
+    }
+    //canvas.style.top = "20vh";
+    //tokaCanvas.style.top = "20vh";
+    //canvas.style.x = "20%";
+    //tokaCanvas.style.y = "20%";
 };
