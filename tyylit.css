@@ -42,14 +42,14 @@ input {
 }
 
 #polloalusta {
-  animation-duration: 5s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-name: polloliike;
 }
 
 #tokaPolloAlusta {
-  animation-duration: 5s;
+  animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-name: polloliikekaksi;
@@ -78,7 +78,6 @@ input {
     transform: translate(0%, 0%); 
   }
   to {
-    /* HUOM: käytössä olevaa gradienttia voi vaihtaa näin!     fill: url(#Gradient1); */
     transform: translate(25%, 0%);
   }
 }
