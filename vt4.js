@@ -4,8 +4,8 @@
 window.onload = function() {
     let svg = document.getElementById("piirtoalusta");
 
-    svg.style.width = "95vw";
-    svg.style.height = "95vh";
+    svg.style.width = "100vw";
+    svg.style.height = "100vh";
     //svg.setAttribute("width", "95vw");
     //svg.setAttribute("height", "95vh");
     
@@ -128,7 +128,6 @@ window.onload = function() {
     document.body.appendChild(canvas);
     document.body.appendChild(tokaCanvas);
 };
-
 
 /**
  * Tällä tapahtumankäsittelijäfunktiolla sovitellaan pöllönkuva selainikkunan keskelle, kun sen kokoa muutetaan.

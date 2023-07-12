@@ -4,6 +4,7 @@
 
 body {
   background-color: black;
+  margin: 0;
 }
   
 .stop1 {
@@ -23,6 +24,13 @@ input {
   left: 0;
   top: 0;
   z-index: 3;
+  margin: 0;
+  padding: 0;
+}
+
+svg {
+  display: block;
+  margin: 0;
 }
 
 .neliot {
