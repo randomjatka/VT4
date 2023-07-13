@@ -86,7 +86,7 @@ svg {
     transform: translate(0%, 0%); 
   }
   to {
-    transform: translate(25%, 0%);
+    transform: translate(25vw, 0%);
   }
 }
 
