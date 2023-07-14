@@ -33,6 +33,19 @@ svg {
   margin: 0;
 }
 
+/* Jos selainikkunaa pienentää vähemmäksi kuin pöllön minimikoko, piilotetaan ylijäämä */
+@media all and (max-width: 600px) {
+  body {
+    overflow: hidden;
+  }
+}
+
+@media all and (max-height: 560px) {
+  body {
+    overflow: hidden;
+  }
+}
+
 .neliot {
   animation-duration: 5s;
   animation-iteration-count: infinite;
